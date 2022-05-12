@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "epitech-serverless": {
+      "hosting": {
+        "serverless-archicture": [
+          "epitech-serverless"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "epitech-serverless"
+  }
+}
