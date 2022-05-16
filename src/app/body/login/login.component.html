@@ -1,0 +1,29 @@
+<div class="login">
+    <div class="center">
+        <h1 class="title">LOGIN</h1>
+    </div>
+    <mat-form-field style.fontSize.px="15" class="form" appearance="standard" color="white">
+        <mat-label>Email</mat-label>
+        <input matInput [errorStateMatcher]="matcher" placeholder="Ex. pat@example.com" type="email" [formControl]="email" autocomplete="on" name="email" required>
+        <mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
+            Please enter a valid email address
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field style.fontSize.px="15" class="form" appearance="standard" color="white">
+        <mat-label>Password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" [formControl]="password" autocomplete="on" name="current-password" required>
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+    </mat-form-field>
+    <div class="center">
+        <button mat-raised-button class="login-butt" (click)="login()" *ngIf="!isLoading">Login</button>
+        <div style="display: flex; justify-content: center; align-items: center">
+            <mat-spinner *ngIf="isLoading" diameter="30">
+            </mat-spinner>
+        </div>
+    </div>
+    <div class="to-register">
+        <span>Need to create an <a routerLink="/register"> account</a></span>
+    </div>
+</div>

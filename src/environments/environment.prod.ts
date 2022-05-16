@@ -8,5 +8,7 @@ export const environment = {
     authDomain: 'epitech-serverless.firebaseapp.com',
     messagingSenderId: '711705843792',
   },
-  production: true
+  production: true,
+  apiUrl: 'https://api.epitech-owasp-2022.com/',
+  authRequired: true
 };

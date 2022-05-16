@@ -1,0 +1,14 @@
+<div class="file-comp">
+    <h1>Upload File</h1>
+    <h2>PDF, JPEG, Docx and PNG <b>ONLY!</b></h2>
+    <ngx-file-drop [disabled]="isLoading" [useDragEnter]="false" dropZoneClassName="empty" class="drop-ngx" accept=".pdf, .jpeg, .docx, .png" [multiple]="false" (onFileDrop)="dropped($event)" (onFileOver)="fileOver($event)" (onFileLeave)="fileLeave($event)">
+        <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+            <div class="center drop-zone">
+                <h1>Drag And Drop</h1>
+                <button [disabled]="isLoading" type="button" mat-raised-button (click)="openFileSelector()">From my computer</button>
+            </div>
+        </ng-template>
+    </ngx-file-drop>
+    <h2 style="margin-top: 16px;" *ngIf="progress >= 0">{{progress}}%</h2>
+    <mat-progress-bar *ngIf="progress >= 0" class="progress-bar" mode="determinate" [value]="progress"></mat-progress-bar>
+</div>

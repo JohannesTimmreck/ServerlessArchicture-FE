@@ -1,1 +1,126 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use "@angular/material" as mat;
+// Plus imports for other components in your app.
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$front-primary: mat.define-palette(mat.$indigo-palette);
+$front-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+// The warn palette is optional (defaults to red).
+$front-warn: mat.define-palette(mat.$red-palette);
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$front-theme: mat.define-light-theme( ( color: ( primary: $front-primary, accent: $front-accent, warn: $front-warn, ), ));
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($front-theme);
+
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    color: var(--text_color)!important;
+}
+
+:root {
+    --background_color: #1E1E1E;
+    --text_color: #FFFFFF;
+    --text_color_sec: #8E8E8E;
+}
+
+.aligner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.aligner-item {
+    max-width: 50vw;
+}
+
+.aligner-item--top {
+    align-self: flex-start;
+}
+
+.aligner-item--bottom {
+    align-self: flex-end;
+}
+
+.mat-focused .mat-form-field-label,
+.mat-list-item {
+    /*change color of label*/
+    color: var(--text_color) !important;
+}
+
+.mat-form-field-underline {
+    /*change color of underline*/
+    background-color: var(--text_color_sec) !important;
+}
+
+.mat-form-field-ripple {
+    /*change color of underline when focused*/
+    background-color: var(--text_color_sec) !important;
+    ;
+}
+
+.mat-form-field-label {
+    color: var(--text_color_sec)!important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px var(--background_color) inset !important;
+}
+
+input:-webkit-autofill {
+    -webkit-text-fill-color: var(--text_color) !important;
+}
+
+.mat-divider {
+    border-top-color: var(--text_color);
+}
+
+.mat-form-field-appearance-standard .mat-form-field-flex {
+    padding-top: 0px!important;
+}
+
+.mat-checkbox-frame {
+    border-color: white
+}
+
+.configError {
+    color: whitesmoke;
+    background-color: red;
+    font-size: 40px!important;
+}
+
+.configGood {
+    color: whitesmoke;
+    background-color: green;
+    font-size: 40px!important;
+}
+
+.mat-button-disabled,
+.mat-checkbox-disabled .mat-checkbox-label,
+.mat-checkbox-disabled {
+    color: var(--text_color_sec)!important;
+    cursor: not-allowed!important;
+}
+
+.no-max-width {
+    max-width: none!important;
+}
