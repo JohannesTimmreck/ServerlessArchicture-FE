@@ -1,7 +1,10 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, isDevMode, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthentificationService } from '../_services/authentification.service';
+import {
+  Auth,
+} from '@angular/fire/auth';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +18,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   saveSub: Subscription
 
-  constructor(private router: Router, public auth: AuthentificationService) {
+  constructor(private authFire: Auth, private router: Router, public auth: AuthentificationService) {
     this.check(router.url)
 
     this.saveSub = router.events.subscribe({
@@ -52,6 +55,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    if (this.authFire.currentUser)
+      this.authFire.currentUser.getIdToken(true)
+        .then((token) => console.log(token));
   }
 
   goTo(link: string) {
