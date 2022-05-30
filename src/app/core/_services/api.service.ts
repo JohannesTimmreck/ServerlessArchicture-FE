@@ -39,6 +39,36 @@ export class ApiService {
 
   fileRoute = `${environment.apiUrl}chats/files/messages`
 
+  fileRoute2 = `${environment.apiUrl}chats`
+
+  getChatMessage(name: string): Observable<any> {
+    return this.http.get(this.fileRoute2 + '/' + name + '/messages', { headers: { 'Authorization': this.bearer } });
+  }
+
+  sendChatMessage(name: string, message: string): Observable<any> {
+    return this.http.post(this.fileRoute2 + '/' + name + '/messages', {
+      'message': message
+    }, {
+      headers: { 'Authorization': this.bearer }
+    });
+  }
+
+  createChat(name: string): Observable<any> {
+    return this.http.post(this.fileRoute2, {
+      'name': name
+    }, {
+      headers: { 'Authorization': this.bearer }
+    });
+  }
+
+  joinChat(name: string): Observable<any> {
+    return this.http.put(this.fileRoute2 + '/join/' + name, {}, { headers: { 'Authorization': this.bearer } });
+  }
+
+  listChats(): Observable<any> {
+    return this.http.get(this.fileRoute2 + '/mine', { headers: { 'Authorization': this.bearer } });
+  }
+
   listMyFiles(): Observable<any> {
     let headerDict = {
       'Content-Type': 'application/json',

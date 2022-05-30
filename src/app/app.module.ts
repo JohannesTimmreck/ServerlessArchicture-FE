@@ -38,6 +38,8 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { LayoutComponent } from './layout/layout.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { VerticalComponent } from './layout/vertical/vertical.component';
+import { PortfolioDetailComponent } from './body/portfolio-detail/portfolio-detail.component';
+import { PortfolioComponent } from './body/portfolio/portfolio.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import { VerticalComponent } from './layout/vertical/vertical.component';
     AddFileComponent,
     HeaderComponent,
     LayoutComponent,
-    VerticalComponent
+    VerticalComponent,
+    PortfolioDetailComponent,
+    PortfolioComponent
   ],
   imports: [
     provideFirebaseApp(() => initializeApp(environment.firebase)),

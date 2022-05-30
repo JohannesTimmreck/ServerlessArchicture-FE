@@ -11,6 +11,8 @@ import {
 import { LoginComponent } from './body/login/login.component';
 import { RegisterComponent } from './body/register/register.component';
 import { AddFileComponent } from './body/add-file/add-file.component';
+import { PortfolioDetailComponent } from './body/portfolio-detail/portfolio-detail.component';
+import { PortfolioComponent } from './body/portfolio/portfolio.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectLoggedInToHome = () => redirectLoggedInTo(['']);
@@ -19,10 +21,12 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent, ...canActivate(redirectLoggedInToHome), },
   { path: 'register', component: RegisterComponent, ...canActivate(redirectLoggedInToHome), },
 
-  { path: 'add-file', ...canActivate(redirectUnauthorizedToLogin), component: AddFileComponent },
+  { path: 'image', component: PortfolioComponent, ...canActivate(redirectUnauthorizedToLogin) },
+  { path: 'image/:id', component: PortfolioDetailComponent, ...canActivate(redirectUnauthorizedToLogin) },
+  { path: 'upload', component: AddFileComponent, ...canActivate(redirectUnauthorizedToLogin) },
 
-  { path: '', redirectTo: 'add-file', pathMatch: 'full' },
-  { path: '**', redirectTo: 'add-file', pathMatch: 'full' }
+  { path: '', redirectTo: 'image', pathMatch: 'full' },
+  { path: '**', redirectTo: 'image', pathMatch: 'full' }
 
 ];
 

@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-lg-8 col-md-12 mb-4 mb-lg-0">
+        <mat-card class="example-card">
+            <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>{{src.title}}</mat-card-title>
+            </mat-card-header>
+            <img mat-card-image [src]="src.blob">
+        </mat-card>
+    </div>
+    <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
+        <mat-form-field appearance="outline" class="messageBox">
+            <mat-label>Ton message</mat-label>
+            <input matInput [(ngModel)]="message">
+            <button class="messageButton" mat-raised-button (click)="sendMessage()">
+          <mat-icon>send</mat-icon>
+        </button>
+        </mat-form-field>
+        <mat-card>
+            <mat-card-content *ngFor="let message of messageList">
+                <p>{{message.message}}</p>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
