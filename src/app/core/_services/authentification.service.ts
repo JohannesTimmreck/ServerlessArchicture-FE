@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, catchError, flatMap, from, map, mergeMap, Observable, of } from 'rxjs';
+import { BehaviorSubject, from, Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ErrorService } from './error.service';
 import {

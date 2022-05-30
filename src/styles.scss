@@ -1,28 +1,6 @@
-// Custom Theming for Angular Material
-// For more information: https://material.angular.io/guide/theming
-@use "@angular/material" as mat;
-// Plus imports for other components in your app.
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
-@include mat.core();
-// Define the palettes for your theme using the Material Design palettes available in palette.scss
-// (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// hue. Available color palettes: https://material.io/design/color/
-$front-primary: mat.define-palette(mat.$indigo-palette);
-$front-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
-// The warn palette is optional (defaults to red).
-$front-warn: mat.define-palette(mat.$red-palette);
-// Create the theme object. A theme consists of configurations for individual
-// theming systems such as "color" or "typography".
-$front-theme: mat.define-light-theme( ( color: ( primary: $front-primary, accent: $front-accent, warn: $front-warn, ), ));
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-@include mat.all-component-themes($front-theme);
-
 /* You can add global styles to this file, and also import other style files */
 
+@import '~@angular/material/theming';
 html,
 body {
     height: 100%;
@@ -35,8 +13,8 @@ body {
 }
 
 :root {
-    --background_color: #1E1E1E;
-    --text_color: #FFFFFF;
+    --background_color: #ffffff;
+    --text_color: #000000;
     --text_color_sec: #8E8E8E;
 }
 
@@ -90,16 +68,16 @@ input:-webkit-autofill {
     -webkit-text-fill-color: var(--text_color) !important;
 }
 
-.mat-divider {
-    border-top-color: var(--text_color);
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-.mat-form-field-appearance-standard .mat-form-field-flex {
-    padding-top: 0px!important;
-}
-
-.mat-checkbox-frame {
-    border-color: white
+.clickable {
+    cursor: pointer;
+    &:hover {
+        @include mat-elevation(10);
+    }
 }
 
 .configError {
@@ -114,13 +92,44 @@ input:-webkit-autofill {
     font-size: 40px!important;
 }
 
-.mat-button-disabled,
-.mat-checkbox-disabled .mat-checkbox-label,
-.mat-checkbox-disabled {
-    color: var(--text_color_sec)!important;
-    cursor: not-allowed!important;
+.mat-drawer-inner-container::-webkit-scrollbar {
+    width: 7px;
+    height: 5px;
 }
 
-.no-max-width {
-    max-width: none!important;
+.mat-drawer-inner-container::-webkit-scrollbar-button {
+    width: 0px;
+    height: 0px;
+}
+
+.mat-drawer-inner-container::-webkit-scrollbar-thumb {
+    background: #e1e1e1;
+    border: 0px none #ffffff;
+    border-radius: 50px;
+}
+
+.mat-drawer-inner-container::-webkit-scrollbar-thumb:hover {
+    background: #ffffff;
+}
+
+.mat-drawer-inner-container::-webkit-scrollbar-thumb:active {
+    background: #424242;
+}
+
+.mat-drawer-inner-container::-webkit-scrollbar-track {
+    background: #666666;
+    border: 0px none #ffffff;
+    border-radius: 50px;
+}
+
+.mat-drawer-inner-container::-webkit-scrollbar-track:hover {
+    background: #666666;
+}
+
+.mat-drawer-inner-container::-webkit-scrollbar-track:active {
+    background: #626262;
+}
+
+.mat-drawer-inner-container::-webkit-scrollbar-corner {
+    background: transparent;
 }

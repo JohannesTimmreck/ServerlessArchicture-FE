@@ -1,0 +1,12 @@
+<mat-drawer-container class="background ">
+    <mat-drawer #drawer class="vertical" mode="side" [opened]="openedDrawer">
+        <app-vertical></app-vertical>
+    </mat-drawer>
+    <mat-drawer-content>
+        <app-header (closeMenu)="openedDrawer = !openedDrawer" class="header"></app-header>
+
+        <div class="content">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-drawer-content>
+</mat-drawer-container>

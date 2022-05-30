@@ -1,0 +1,78 @@
+.title {
+    margin-top: 1.5rem;
+    margin-right: 1.5rem;
+    margin-left: 1.5rem;
+    height: 5rem;
+    font-size: 30px;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-direction: row;
+    cursor: pointer;
+    margin-bottom: 0px;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.icon {
+    height: 50px;
+    margin-right: 15px;
+}
+
+.nav {
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    background-color: #0F172A;
+    color: white;
+    gap: 4px
+}
+
+.name {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.select-nav {
+    margin: 0 12px;
+    padding: 10px 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    flex-wrap: nowrap;
+    cursor: pointer;
+    text-decoration: none;
+    color: #CACCD0;
+}
+
+.selected {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+}
+
+.select-nav:hover {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+}
+
+.icon-nav {
+    width: 24px;
+    height: 24px;
+    margin-right: 16px;
+}
+
+.classTitle {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: rgb(129, 140, 248);
+    padding: 10px 16px;
+}

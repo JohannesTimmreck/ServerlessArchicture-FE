@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class ApiService {
 
+  bearer: string = "";
   constructor(private http: HttpClient) { }
 
   //---------------------------ADMIN---------------------------//
@@ -36,17 +37,33 @@ export class ApiService {
 
   //---------------------------FILE---------------------------//
 
-  fileRoute = `${environment.apiUrl}files`
+  fileRoute = `${environment.apiUrl}chats/files/messages`
 
   listMyFiles(): Observable<any> {
-    return this.http.get<any>(this.fileRoute + '/my');
+    let headerDict = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Access-Control-Allow-Headers': 'Content-Type',
+      'Access-Control-Allow-Origin': '*',
+      'Authorization': this.bearer
+    }
+
+    let requestOptions = {
+      headers: new HttpHeaders(headerDict),
+    };
+    return this.http.get(this.fileRoute, requestOptions);
   }
 
+  getSingleFile(fileName: string): any {
+    return this.http.get(this.fileRoute + '/file/' + fileName, { responseType: 'blob', headers: { 'Authorization': this.bearer } });
+  }
+
+
   uploadFile(file: FormData, publicType: boolean = false): Observable<any> {
-    file.append("public", String(publicType))
-    return this.http.post<any>(this.fileRoute + '/upload', file, {
+    return this.http.post<any>(this.fileRoute + '/file', file, {
       reportProgress: true,
-      observe: 'events'
+      observe: 'events',
+      headers: { 'Authorization': this.bearer }
     });
   }
 

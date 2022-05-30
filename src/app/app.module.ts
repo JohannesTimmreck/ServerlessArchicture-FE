@@ -17,6 +17,13 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatCardModule } from '@angular/material/card';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,11 +31,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './body/login/login.component';
 import { RegisterComponent } from './body/register/register.component';
 import { AddFileComponent } from './body/add-file/add-file.component';
-import { HeaderComponent } from './header/header.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { provideAuth, getAuth } from '@angular/fire/auth';
+import { LayoutComponent } from './layout/layout.component';
+import { HeaderComponent } from './layout/header/header.component';
+import { VerticalComponent } from './layout/vertical/vertical.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +45,9 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
     LoginComponent,
     RegisterComponent,
     AddFileComponent,
-    HeaderComponent
+    HeaderComponent,
+    LayoutComponent,
+    VerticalComponent
   ],
   imports: [
     provideFirebaseApp(() => initializeApp(environment.firebase)),
@@ -58,7 +69,14 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
     MatCheckboxModule,
     NgxFileDropModule,
     MatProgressSpinnerModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatToolbarModule,
+    MatCardModule,
+    MatExpansionModule,
+    MatMenuModule,
+    MatSidenavModule,
+    MatSelectModule,
+    MatDialogModule,
   ],
   providers: [
     { provide: AUTH_SETTINGS, useValue: { appVerificationDisabledForTesting: true } }],

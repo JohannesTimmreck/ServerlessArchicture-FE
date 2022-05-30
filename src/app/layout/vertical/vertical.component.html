@@ -1,0 +1,16 @@
+<div class="nav">
+
+    <div class="title" (click)="goTo('/infoType')">
+        <img class="icon" src="../../assets/cat.png" alt="" />Serverless
+    </div>
+
+    <span class="classTitle">Navigation</span>
+    <a *ngFor="let item of list" class="select-nav" [href]="'/infoType/' + item.name + '/' + item.id" [routerLink]="'/infoType/' + item.name + '/' + item.id" routerLinkActive="selected">
+        <mat-icon role="img" class="icon-nav">{{item.icon}}</mat-icon>
+        <div class="name">
+            <div class=""><span> {{item.name}} </span></div>
+        </div>
+    </a>
+    <span class="example-spacer"></span>
+    <!-- <div style="margin-top: 1.5rem"></div> -->
+</div>

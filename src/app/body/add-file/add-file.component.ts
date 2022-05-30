@@ -2,8 +2,8 @@ import { HttpEvent, HttpEventType } from '@angular/common/http';
 import { Component, isDevMode, OnDestroy, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NgxFileDropEntry } from 'ngx-file-drop';
-import { ApiService } from 'src/app/_services/api.service';
-import { ErrorService } from 'src/app/_services/error.service';
+import { ApiService } from 'src/app/core/_services/api.service';
+import { ErrorService } from 'src/app/core/_services/error.service';
 
 @Component({
   selector: 'app-add-file',
