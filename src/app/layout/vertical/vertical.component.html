@@ -5,7 +5,7 @@
     </div>
 
     <span class="classTitle">Navigation</span>
-    <a *ngFor="let item of list" class="select-nav" [href]="'/infoType/' + item.name + '/' + item.id" [routerLink]="'/infoType/' + item.name + '/' + item.id" routerLinkActive="selected">
+    <a *ngFor="let item of list" class="select-nav" [href]="item.route" [routerLink]="item.route" routerLinkActive="selected">
         <mat-icon role="img" class="icon-nav">{{item.icon}}</mat-icon>
         <div class="name">
             <div class=""><span> {{item.name}} </span></div>

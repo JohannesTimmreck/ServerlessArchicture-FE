@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Auth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { AuthentificationService } from './core/_services/authentification.service';
-import { Info } from './core/_services/Info.service';
+import { Info } from './core/_services/info.service';
 
 @Component({
   selector: 'app-root',
@@ -23,6 +23,8 @@ export class AppComponent implements OnInit {
           this.info.bearer = token;
         });
         this.info.uid = user.uid;
+        if (user.email)
+          this.info.pseudo = user.email
       } else {
         this.router.navigate(['/']);
       }

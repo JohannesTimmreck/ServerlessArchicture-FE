@@ -2,14 +2,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Info } from './info.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  bearer: string = "";
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, public info: Info) { }
 
   //---------------------------ADMIN---------------------------//
 
@@ -42,14 +42,14 @@ export class ApiService {
   fileRoute2 = `${environment.apiUrl}chats`
 
   getChatMessage(name: string): Observable<any> {
-    return this.http.get(this.fileRoute2 + '/' + name + '/messages', { headers: { 'Authorization': this.bearer } });
+    return this.http.get(this.fileRoute2 + '/' + name + '/messages', { headers: { 'Authorization': this.info.bearer } });
   }
 
   sendChatMessage(name: string, message: string): Observable<any> {
     return this.http.post(this.fileRoute2 + '/' + name + '/messages', {
       'message': message
     }, {
-      headers: { 'Authorization': this.bearer }
+      headers: { 'Authorization': this.info.bearer }
     });
   }
 
@@ -57,16 +57,16 @@ export class ApiService {
     return this.http.post(this.fileRoute2, {
       'name': name
     }, {
-      headers: { 'Authorization': this.bearer }
+      headers: { 'Authorization': this.info.bearer }
     });
   }
 
   joinChat(name: string): Observable<any> {
-    return this.http.put(this.fileRoute2 + '/join/' + name, {}, { headers: { 'Authorization': this.bearer } });
+    return this.http.put(this.fileRoute2 + '/join/' + name, {}, { headers: { 'Authorization': this.info.bearer } });
   }
 
   listChats(): Observable<any> {
-    return this.http.get(this.fileRoute2 + '/mine', { headers: { 'Authorization': this.bearer } });
+    return this.http.get(this.fileRoute2 + '/mine', { headers: { 'Authorization': this.info.bearer } });
   }
 
   listMyFiles(): Observable<any> {
@@ -75,7 +75,7 @@ export class ApiService {
       'Accept': 'application/json',
       'Access-Control-Allow-Headers': 'Content-Type',
       'Access-Control-Allow-Origin': '*',
-      'Authorization': this.bearer
+      'Authorization': this.info.bearer
     }
 
     let requestOptions = {
@@ -85,7 +85,7 @@ export class ApiService {
   }
 
   getSingleFile(fileName: string): any {
-    return this.http.get(this.fileRoute + '/file/' + fileName, { responseType: 'blob', headers: { 'Authorization': this.bearer } });
+    return this.http.get(this.fileRoute + '/file/' + fileName, { responseType: 'blob', headers: { 'Authorization': this.info.bearer } });
   }
 
 
@@ -93,7 +93,7 @@ export class ApiService {
     return this.http.post<any>(this.fileRoute + '/file', file, {
       reportProgress: true,
       observe: 'events',
-      headers: { 'Authorization': this.bearer }
+      headers: { 'Authorization': this.info.bearer }
     });
   }
 

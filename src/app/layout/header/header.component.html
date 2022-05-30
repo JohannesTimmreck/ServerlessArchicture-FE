@@ -11,24 +11,23 @@
 
 
     <span class="example-spacer"></span>
-    <button mat-raised-button class="edit-butt" (click)="logout()">Logout</button>
 
-    <!-- <div class="info" [matMenuTriggerFor]="menu">
-        <span *ngIf="auth.currentUserValue" class="name">{{auth.currentUserValue.email}}</span>
+    <div class="info" [matMenuTriggerFor]="menu">
+        <span *ngIf="connected" class="name">{{email}}</span>
         <mat-icon class="mat-icon">account_circle</mat-icon>
     </div>
     <mat-menu #menu="matMenu">
-        <button *ngIf="!auth.currentUserValue" (click)="goTo('/register')" mat-menu-item>
+        <button *ngIf="!connected" (click)="goTo('/register')" mat-menu-item>
         <mat-icon>add_circle_outline</mat-icon>
         <span>Register</span>
       </button>
-        <button *ngIf="!auth.currentUserValue" (click)="goTo('/login')" mat-menu-item>
+        <button *ngIf="!connected" (click)="goTo('/login')" mat-menu-item>
         <mat-icon>login</mat-icon>
         <span>Login</span>
       </button>
-        <button *ngIf="auth.currentUserValue" (click)="auth.logout()" mat-menu-item>
+        <button *ngIf="connected" (click)="auth.logout()" mat-menu-item>
         <mat-icon>logout</mat-icon>
         <span>Logout</span>
       </button>
-    </mat-menu> -->
+    </mat-menu>
 </mat-toolbar>

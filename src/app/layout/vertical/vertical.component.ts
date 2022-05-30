@@ -9,34 +9,18 @@ import { Subscription } from 'rxjs';
 })
 export class VerticalComponent implements OnInit, OnDestroy {
 
-  list: any[] = []
-
-  //sub: Subscription
+  list: any[] = [
+    { route: '/upload', name: 'Upload File' },
+    { route: '/image', name: 'See File' }
+  ]
 
   constructor(private router: Router) {
-    /* this.sub = this.topicsService.currentTopicsSubject.subscribe({
-      next: (values: any[]) => {
-        if (values) {
-          this.list = values.map((value: any) => {
-            if (value.name === "Logement") {
-              value.icon = 'house'
-            } else if (value.name === "Finance") {
-              value.icon = 'attach_money'
-            } else {
-              value.icon = 'house'
-            }
-            return value
-          })
-        }
-      }
-    }) */
   }
 
   ngOnInit(): void {
   }
 
   ngOnDestroy(): void {
-    //this.sub.unsubscribe()
   }
 
   goTo(link: string) {

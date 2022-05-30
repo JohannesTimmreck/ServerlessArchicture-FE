@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ImageService } from 'src/app/core/_services/image.service';
-import { Info } from 'src/app/core/_services/Info.service';
+import { Info } from 'src/app/core/_services/info.service';
 
 interface row {
   images: any[];
@@ -21,7 +21,6 @@ export class PortfolioComponent implements OnInit {
   rows: row[] = [];
 
   constructor(public imageService: ImageService, public info: Info) {
-    imageService.bearer = info.bearer;
     imageService.listMyFiles().subscribe((e: any) => {
       e.forEach((a: any) => {
         console.log(a.filepath);

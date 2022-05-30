@@ -44,10 +44,9 @@ export class AddFileComponent implements OnInit, OnDestroy {
         fileEntry.file((file: File) => {
 
           if (!(file.type === 'image/png'
-            || file.type === 'application/pdf'
-            || file.type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+            || file.type === 'image/gif'
             || file.type === 'image/jpeg')) {
-            this.error.showError("Only accept .pdf, .docx, .jpeg, .png")
+            this.error.showError("Only accept .gif, .jpeg, .png")
             return
           }
 
@@ -61,7 +60,6 @@ export class AddFileComponent implements OnInit, OnDestroy {
 
               switch (event.type) {
                 case HttpEventType.Sent:
-                  this.api.createChat(file.name).subscribe((e: any) => console.log(e))
                   if (isDevMode()) {
                     console.log('Request has been made!');
                   }
@@ -78,6 +76,7 @@ export class AddFileComponent implements OnInit, OnDestroy {
                   break;
                 case HttpEventType.Response:
                   this.isLoading = false;
+                  this.api.createChat(file.name).subscribe((e: any) => console.log(e))
                   if (isDevMode()) {
                     console.log('File sent', event.body);
                   }
@@ -86,6 +85,7 @@ export class AddFileComponent implements OnInit, OnDestroy {
               }
             },
             error: (error: any) => {
+              console.error(error);
               this.isLoading = false;
               this.progress = -1;
             }

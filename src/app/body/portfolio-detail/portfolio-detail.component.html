@@ -16,10 +16,12 @@
           <mat-icon>send</mat-icon>
         </button>
         </mat-form-field>
-        <mat-card>
-            <mat-card-content *ngFor="let message of messageList">
+        <mat-card *ngFor="let message of messageList" style="margin-bottom: 4px;">
+            <mat-card-content>
+                <h4 style="font-weight: bolder;">{{message.email}}</h4>
                 <p>{{message.message}}</p>
             </mat-card-content>
+
         </mat-card>
     </div>
 </div>
