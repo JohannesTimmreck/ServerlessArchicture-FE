@@ -13,6 +13,7 @@ import { RegisterComponent } from './body/register/register.component';
 import { AddFileComponent } from './body/add-file/add-file.component';
 import { PortfolioDetailComponent } from './body/portfolio-detail/portfolio-detail.component';
 import { PortfolioComponent } from './body/portfolio/portfolio.component';
+import { GroupComponent } from './body/groups/group.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectLoggedInToHome = () => redirectLoggedInTo(['']);
@@ -24,9 +25,11 @@ const routes: Routes = [
   { path: 'image', component: PortfolioComponent, ...canActivate(redirectUnauthorizedToLogin) },
   { path: 'image/:id', component: PortfolioDetailComponent, ...canActivate(redirectUnauthorizedToLogin) },
   { path: 'upload', component: AddFileComponent, ...canActivate(redirectUnauthorizedToLogin) },
+  { path: 'group', component: GroupComponent, ...canActivate(redirectUnauthorizedToLogin) },
 
   { path: '', redirectTo: 'image', pathMatch: 'full' },
-  { path: '**', redirectTo: 'image', pathMatch: 'full' }
+  { path: '**', redirectTo: 'image', pathMatch: 'full' },
+
 
 ];
 

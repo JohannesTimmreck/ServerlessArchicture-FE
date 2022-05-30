@@ -97,6 +97,24 @@ export class ApiService {
     });
   }
 
+  fileRouteGroups: string = `${environment.apiUrl}groups`
+
+  listGroups(): Observable<any> {
+    return this.http.get<any>(this.fileRouteGroups + '/mine', {headers: { 'Authorization': this.info.bearer }});
+  }
+
+  createGroup(name: string): Observable<any> {
+    return this.http.post<any>(this.fileRouteGroups, {
+      'name':name
+    }, {headers: { 'Authorization': this.info.bearer }});
+  }
+
+  addToGroup(email: string, groupName: string): Observable<any> {
+    return this.http.put<any>(this.fileRouteGroups + '/add/' + groupName, {
+      'email':email
+    }, {headers: { 'Authorization': this.info.bearer }});
+  }
+
   deleteFile(file_id: string) {
     return this.http.delete<any>(this.fileRoute + '/' + file_id);
   }

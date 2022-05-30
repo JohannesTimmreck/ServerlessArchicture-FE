@@ -1,0 +1,11 @@
+<div mat-dialog-content>
+  <p>Which members want you to add ?</p>
+  <mat-form-field appearance="fill">
+    <mat-label>email</mat-label>
+    <input matInput [(ngModel)]="data.email">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data.email" cdkFocusInitial>Add</button>
+</div>

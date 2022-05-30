@@ -40,9 +40,11 @@ import { HeaderComponent } from './layout/header/header.component';
 import { VerticalComponent } from './layout/vertical/vertical.component';
 import { PortfolioDetailComponent } from './body/portfolio-detail/portfolio-detail.component';
 import { PortfolioComponent } from './body/portfolio/portfolio.component';
+import { GroupComponent, DialogOverviewExampleDialog, DialogCreateGroup } from './body/groups/group.component';
 
 @NgModule({
   declarations: [
+    GroupComponent,
     AppComponent,
     LoginComponent,
     RegisterComponent,
@@ -51,7 +53,9 @@ import { PortfolioComponent } from './body/portfolio/portfolio.component';
     LayoutComponent,
     VerticalComponent,
     PortfolioDetailComponent,
-    PortfolioComponent
+    PortfolioComponent,
+    DialogOverviewExampleDialog,
+    DialogCreateGroup
   ],
   imports: [
     provideFirebaseApp(() => initializeApp(environment.firebase)),
